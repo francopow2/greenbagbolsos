@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBag - Bolsos Sostenibles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none.
+        }
+        nav ul li a:hover {
+            background-color: #111;
+        }
+        section {
+            display: none;
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: white.
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around.
+        }
+        .gallery-item {
+            margin: 10px;
+            text-align: center.
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1).
+        }
+        .model-label {
+            font-weight: bold;
+            margin-top: 10px.
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let links = document.querySelectorAll("nav ul li a");
+            let sections = document.querySelectorAll("section");
+            
+            links.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    let targetId = this.getAttribute("href").substring(1);
+                    
+                    sections.forEach(section => {
+                        section.classList.remove("active");
+                        if (section.id === targetId) {
+                            section.classList.add("active");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>GreenBag - Bolsos Sostenibles</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#proyecto">Nuestro Proyecto</a></li>
+            <li><a href="#modelos">Modelos de Bolsos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#empresa">Información de la Empresa</a></li>
+        </ul>
+    </nav>
+    <section id="inicio" class="active">
+        <h2>Inicio</h2>
+        <p>Bienvenidos a GreenBag, tu opción sostenible para bolsos hechos a partir de poliéster reciclado.</p>
+    </section>
+    <section id="proyecto">
+        <h2>Nuestro Proyecto</h2>
+        <h3>El Problema</h3>
+        <p>El impacto ambiental generado por la industria textil y el consumo masivo de plásticos desechables es alarmante. Según el artículo “Impacto ambiental de textiles” (2022), la industria textil es un gigante que contamina y consume muchas materias primas, energía, agua y suelo. La popular fast fashion genera una cantidad considerable de residuos textiles que se incineran o van al vertedero, incrementando así la contaminación. En Perú, aproximadamente 1.2 millones de toneladas de residuos plásticos se generan al año, de los cuales solo el 10% se recicla, lo que deja al resto en ríos, mares y tierra, afectando gravemente el medio ambiente (MINAM, 2022).</p>
+        
+        <h3>Nuestra Solución</h3>
+        <p>En respuesta a esta problemática, surge GreenBag, un proyecto que promueve el uso de materiales reciclables para la fabricación de bolsos sostenibles. Nuestra iniciativa no solo busca reducir la huella plástica mediante el uso de poliéster reciclado, sino también concientizar a la sociedad sobre la importancia de optar por productos ecológicos. Al transformar residuos plásticos en productos funcionales y de alta calidad, GreenBag contribuye a la economía circular, disminuye la dependencia de plásticos vírgenes y ofrece una alternativa respetuosa con el medio ambiente.</p>
+        
+        <h3>¿Por Qué GreenBag?</h3>
+        <p>Nuestros bolsos no solo son ecológicos, sino también elegantes y personalizables. Con una tienda digital accesible y envíos a nivel nacional, GreenBag ofrece una experiencia de compra conveniente y comprometida con la sostenibilidad. Cada cliente puede personalizar el diseño de su bolsa según sus gustos, y lanzamos ediciones limitadas inspiradas en tendencias, festividades y la cultura local. Al elegir GreenBag, te unes a un movimiento que fomenta el consumo consciente y la protección de nuestro planeta.</p>
+    </section>
+    <section id="modelos">
+        <h2>Modelos de Bolsos</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="bolso1.jpg" alt="Modelo 1">
+                <p class="model-label">Modelo 1</p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso2.jpg" alt="Modelo 2">
+                <p class="model-label">Modelo 2</p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso3.jpg" alt="Modelo 3">
+                <p class="model-label">Modelo 3</p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso4.jpg" alt="Modelo 4">
+                <p class="model-label">Modelo 4</p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso5.jpg" alt="Modelo 5">
+                <p class="model-label">Modelo 5</p>
+            </div>
+        </div>
+    </section>
+    <section id="contacto">
+    <h2>Contacto</h2>
+    <p><strong>Correo:</strong> greenbag@gmail.com</p>
+    <p><strong>Número:</strong> +51 975 053 365</p>
+    <p><strong>Redes Sociales:</strong> Síguenos en <a href="https://www.instagram.com">Instagram</a> y <a href="https://www.tiktok.com">TikTok</a></p>
+    <p><strong>Ubicación:</strong> <a href="https://www.google.com/maps/place/Jr.+Catacaos+197,+Piura+20001/@-5.1892646,-80.6445437,17z/data=!3m1!4b1!4m6!3m5!1s0x904a1a853bb8abdf:0x1fd8b28ae6f563f1!8m2!3d-5.1892699!4d-80.6419688!16s%2Fg%2F11cs7mwvzs?entry=ttu&g_ep=EgoyMDI1MDIxNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Jr. Catacaos 197, Piura, Perú</a></p>
+</section>
+    <section id="empresa">
+        <h2>Información de la Empresa</h2>
+        <p><strong>Nombre Comercial:</strong> GreenBag</p>
+        <p><strong>Nombre Formal:</strong> GreenBag Soluciones Sostenibles</p>
+        <p><strong>Tipo de Empresa:</strong> Sociedad Anónima Cerrada (S.A.C.)</p>
+        <p><strong>Misión:</strong> Ofrecer alternativas sostenibles y responsables para las compras diarias, contribuyendo a un futuro más sostenible para todos.</p>
+        <p><strong>Visión:</strong> Ser un referente global en la industria de la moda sostenible, impulsando la adopción de materiales reciclados y promoviendo un consumo responsable.</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Greenbag
