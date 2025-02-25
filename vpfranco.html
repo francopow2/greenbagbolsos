@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBag - Bolsos Sostenibles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2em 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #34495e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+
+        section {
+            display: none;
+            padding: 2em;
+            margin: 2em auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 90%;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: calc(33% - 40px);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .model-label {
+            color: #1abc9c;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5em;
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li a {
+                padding: 1em;
+            }
+
+            .gallery-item {
+                width: calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .gallery-item {
+                width: 100%;
+            }
+        }
+
+        /* Estilos para el formulario */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        form input[type="submit"] {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #16a085;
+        }
+
+        /* Estilos para las preguntas frecuentes */
+        .faq-item h3 {
+            cursor: pointer;
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+            transition: color 0.3s;
+        }
+
+        .faq-item h3:hover {
+            color: #1abc9c;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-left: 1em;
+            border-left: 3px solid #1abc9c;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GreenBag - Bolsos Sostenibles</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#inicio" onclick="showSection('inicio')">Inicio</a></li>
+            <li><a href="#proyecto" onclick="showSection('proyecto')">Nuestro Proyecto</a></li>
+            <li><a href="#modelos" onclick="showSection('modelos')">Modelos de Bolsos</a></li>
+            <li><a href="#contacto" onclick="showSection('contacto')">Contacto</a></li>
+            <li><a href="#empresa" onclick="showSection('empresa')">Información de la Empresa</a></li>
+            <li><a href="#faq" onclick="showSection('faq')">Preguntas Frecuentes</a></li>
+        </ul>
+    </nav>
+
+   <section id="inicio" class="active">
+    <div class="hero" style="text-align: center; padding: 6em 0;">
+        <img src="portada.jpg" alt="Portada de GreenBag" style="max-width: 100%; height: auto; border-radius: 8px;">
+    </div>
+</section>
+    
+    <section id="proyecto">
+        <img src="Portadanosotros.jpg" alt="Imagen Grande" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>GreenBag es una empresa peruana que opera virtualmente y se dedica a promover la sostenibilidad a través de la creación de bolsos sostenibles de poliéster reciclado, diseñados para adaptarse a tu estilo de vida y reducir el uso de plásticos desechables. Desde nuestra sede en Piura, ofrecemos envíos a nivel nacional, brindando a nuestros clientes la oportunidad de elegir productos responsables y prácticos. Comprometidos con la innovación, cada bolsa refleja nuestra pasión por la sostenibilidad y la rica cultura peruana. Además, ofrecemos opciones de personalización y ediciones limitadas que transforman cada compra en una experiencia única. Al elegir GreenBag, no solo adquieres un producto; te unes a un movimiento que fomenta el consumo consciente y la protección de nuestro planeta.</p>
+    </section>
+    
+    <section id="modelos">
+        <h2 style="text-align: center; color: #1abc9c; font-size: 2em; margin-bottom: 1em;">Modelos de Bolsos</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="bolso1.jpg" alt="Modelo 1">
+                <h3 class="model-label">Modelo 1</h3>
+                <p>Bolso Greenbag en color verde intenso, con un diseño exclusivo y elegante que combina estilo y sostenibilidad.</p>
+                <p><strong>Precio: S/30</strong></p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso2.jpg" alt="Modelo 2">
+                <h3 class="model-label">Modelo 2</h3>
+                <p>Bolso Greenbag color verde entero, un modelo clásico y sofisticado que destaca por su color uniforme y su diseño minimalista.</p>
+                <p><strong>Precio: S/30</strong></p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso3.jpg" alt="Modelo 3">
+                <h3 class="model-label">Modelo 3</h3>
+                <p>Bolso Greenbag Premium inspirado en Machu Picchu, un modelo de alta calidad que combina la riqueza cultural peruana con un diseño moderno y elegante.</p>
+                <p><strong>Precio: S/110</strong></p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso4.jpg" alt="Modelo 4">
+                <h3 class="model-label">Modelo 4</h3>
+                <p>Colección de Bolsos Greenbag en varios colores: marrón, blanco y piel. Un modelo versátil y práctico para cualquier ocasión.</p>
+                <p><strong>Precio: S/80</strong></p>
+            </div>
+            <div class="gallery-item">
+                <img src="bolso5.jpg" alt="Modelo 5">
+                <h3 class="model-label">Modelo 5</h3>
+                <p>Bolso Greenbag inspirado en la majestuosidad de la Sierra Peruana, un modelo que combina la belleza natural con un diseño innovador y sostenible.</p>
+                <p><strong>Precio: S/85</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>TRABAJA CON NOSOTROS</h2>
+        <img src="aea.jpg" alt="Imagen Contacto" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <p>¡Estamos más que contentos de saber sobre ti!</p>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            <input type="submit" value="Enviar">
+        </form>
+        <h3>Más Info</h3>
+        <p><strong>Correo:</strong> greenbag@gmail.com</p>
+        <p><strong>Número:</strong> +51 975 053 365</p>
+        <p><strong>Redes Sociales:</strong> Síguenos en <a href="https://www.instagram.com" target="_blank" style="color: #1abc9c;">Instagram</a> y <a href="https://www.tiktok.com" target="_blank" style="color: #1abc9c;">TikTok</a></p>
+        <p><strong>Ubicación:</strong> <a href="https://www.google.com/maps/place/Jr.+Catacaos+197,+Piura+20001/@-5.1892646,-80.6445437,17z/data=!3m1!4b1!4m6!3m5!1s0x904a1a853bb8abdf:0x1fd8b28ae6f563f1!8m2!3d-5.1892699!4d-80.6419688!16s%2Fg%2F11cs7mwvzs?entry=ttu&g_ep=EgoyMDI1MDIxNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" style="color: #1abc9c;">Jr. Catacaos 197, Piura, Perú</a></p>
+    </section>
+
+    <section id="empresa">
+    <h2>Información de la Empresa</h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div style="border: 2px solid #333; padding: 10px; border-radius: 8px;">
+            <img src="empresa.jpg" alt="Información de la Empresa" style="display: block; margin: 0 auto; width: 300px; height: auto; cursor: pointer;" onclick="window.location.href='https://youtube.com/shorts/3G0Yp4uJJBk?si=I0sFZ0qM8OkB7wyk';">
+        </div>
+    </div>
+    <p><strong>Nombre Comercial:</strong> GreenBag</p>
+    <p><strong>Nombre Formal:</strong> GreenBag Soluciones Sostenibles</p>
+    <p><strong>Tipo de Empresa:</strong> Sociedad Anónima Cerrada (S.A.C.)</p>
+</section>
+
+    <section id="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿De qué materiales están hechos los bolsos GreenBag?</h3>
+            <p class="faq-answer">Los bolsos GreenBag están hechos de materiales reciclados y sostenibles, incluyendo plásticos recuperados de océanos y ríos.</p>
+        </div>
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿Cómo puedo personalizar mi bolso GreenBag?</h3>
+            <p class="faq-answer">Puedes personalizar tu bolso GreenBag seleccionando entre una variedad de colores y añadiendo detalles únicos hechos por artesanos locales.</p>
+        </div>
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿GreenBag realiza envíos a nivel nacional?</h3>
+            <p class="faq-answer">Sí, GreenBag realiza envíos a nivel nacional y utiliza empaques ecológicos para minimizar el impacto ambiental.</p>
+        </div>
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿Cómo contribuye GreenBag a la sostenibilidad?</h3>
+            <p class="faq-answer">GreenBag contribuye a la sostenibilidad mediante el uso de materiales reciclados y la implementación de prácticas de producción responsables.</p>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            let sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                section.style.display = "none";
+            });
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+
+        // Mostrar la sección de inicio por defecto
+        showSection('inicio');
+    </script>
+
+    <footer>
+        <p>&copy; 2025 GreenBag. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
